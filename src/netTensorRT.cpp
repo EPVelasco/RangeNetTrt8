@@ -88,6 +88,7 @@ void NetTensorRT::doInfer(const pcl::PointCloud<PointType> &pointcloud_pcl,
 #endif
 
   _context->enqueue(1, (void **) &_deviceBuffers[0], stream_, nullptr);
+  //_context->enqueueV2(1, (void **) &_deviceBuffers[0], stream_, nullptr);
   CHECK_CUDA_ERROR(cudaStreamSynchronize(stream_));
   int totoalSize = getBufferSize(_engine->getBindingDimensions(1),
                                  _engine->getBindingDataType(1));
@@ -159,7 +160,7 @@ void NetTensorRT::doInfer(const pcl::PointCloud<PointType> &pointcloud_pcl,
   std::cout<<"TIME: postprocess_time: "<< postprocess_time <<" ms." << std::endl;
 #endif
 
-#if 1
+#if 0
   // 可视化点云
   pcl::PointCloud<pcl::PointXYZRGB> color_pointcloud;
   paintPointCloud(pointcloud_pcl, color_pointcloud, labels);
@@ -257,7 +258,8 @@ void NetTensorRT::serializeEngine(const std::string &onnx_path,
 //          | 1U << static_cast<uint32_t>(TacticSource::kCUDNN);
 //  config->setTacticSources(tacticType);
 
-  config->setFlag(nvinfer1::BuilderFlag::kFP16);
+  //config->setFlag(nvinfer1::BuilderFlag::kFP16);
+  config->setFlag(nvinfer1::BuilderFlag::kTF32);
   config->setMaxWorkspaceSize(5UL << 30);
   config->setFlag(BuilderFlag::kPREFER_PRECISION_CONSTRAINTS);
 
