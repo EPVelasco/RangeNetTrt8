@@ -5,6 +5,9 @@ project(rangenet_plusplus)
 set(CMAKE_BUILD_TYPE RELEASE)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -O3")
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "-std=c++14")
+set(CMAKE_CXX_FLAGS "-std=gnu++14")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 set(CMAKE_CXX_FLAGS "-Wno-error=deprecated-declarations -Wno-deprecated-declarations -Wno-deprecated -Wno-cpp")
 # suppress eigen warning: "-Wcpp Please use cuda_runtime_api.h or cuda_runtime.h instead"
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-cpp")
@@ -33,7 +36,7 @@ include_directories(
 
 
 # 导入第三方库
-set(Torch_DIR "$ENV{HOME}/application/libtorch/share/cmake/Torch")
+set(Torch_DIR "/home/epvs_docker/ros_ws/libtorch/share/cmake/Torch")
 find_package(Torch REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(PCL REQUIRED QUIET)
@@ -44,8 +47,8 @@ include_directories(${PCL_INCLUDE_DIRS}
   ${YAML_CPP_INCLUDE_DIR})
 
 # TensorRT
-include_directories($ENV{HOME}/application/TensorRT-8.2.3.0/include)
-set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "$ENV{HOME}/application/TensorRT-8.2.3.0/lib")
+include_directories(/usr/src/tensorrt)
+set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "/usr/lib/python3.8/dist-packages/tensorrt")
 find_library(NVINFER NAMES nvinfer)
 find_library(NVPARSERS NAMES nvparsers)
 find_library(NVINFER_PLUGIN NAMES nvinfer_plugin)
