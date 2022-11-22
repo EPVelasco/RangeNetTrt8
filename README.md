@@ -1,59 +1,12 @@
-# [RangeNetTrt8](https://github.com/Natsu-Akatsuki/RangeNetTrt8)
+# Rangenet 
+This project is based on the [RangeNetTrt8](https://github.com/Natsu-Akatsuki/RangeNetTrt8) repository, which is based on [rangenet_lib](https://github.com/PRBonn/rangenet_lib).The algorithm is tested on a docker with Ubuntu 20.04, TensortRT8, cdnn 8.2.4 and ROS-Noetic.
 
-本工程旨将[rangenet工程](https://github.com/PRBonn/rangenet_lib)部署到TensorRT8，ubuntu20.04中
+## File tree
 
-## **Attention**
-
-- **最近正在进行大幅度地改动，本仓库暂时不能很稳定地使用~**
-- 由于使用了较新的API，本工程只适用于TensorRT8.2.3，但可自行查文档修改相应的API
-- 使用过conda环境的torch，然后发现速度会相对较慢(6ms->30ms)
-
-## Feature
-
-更新的依赖和API
-
-- 将代码部署环境提升到**TensorRT8**, **ubuntu20.04**
-- 提供**docker**环境
-- 移除**boost**库
-- 使用**智能指针**管理tensorrt对象和GPU显存的内存回收
-- 提供**ros**例程
-
-更快的运行速度
-
-- 修正了使用**FP16**，分割精度降低的问题[issue#9](https://github.com/PRBonn/rangenet_lib/issues/9)。使模型在保有精度的同时，预测速度大大提升
-- 使用**cuda**编程对数据进行预处理
-- 使用**libtorch**对数据进行knn后处理([参考代码here](https://github.com/PRBonn/lidar-bonnetal/blob/master/train/tasks/semantic/postproc/KNN.py))
-
-<img src="https://natsu-akatsuki.oss-cn-guangzhou.aliyuncs.com/img/image-20220227223539620.png" alt="image-20220227223539620" style="zoom:80%;" />
-
-## TODO
-
-- [ ] 去掉0均值1方差的数据预处理，重新训练模型（毕竟已经有BN层了）
-- [ ] fix: 每次运行的结果不一样...（就很迷）
-
-## 文件树
-
-├── **build**    
-├── **devel**   
-├── **logs**   
-└── **src**   
-　└── **RangeNetTrt8**  
-　　├── **CMakeLists.txt**   
-　　├── **CMakeLists_v2.txt**   
-　　├── **darknet53**   
-　　├── **docker**   
-　　├── **example**   
-　　├── **include**   
-　　├── **launch**   
-　　├── **LICENSE**   
-　　├── **ops**   
-　　├── **package.xml**   
-　　├── **pics**   
-　　├── **README.md**   
-　　├── **rosbag**   
-　　├── **script**   
-　　├── **src**   
-　　└── **utils**  
+└── **RangeNetTrt8**   
+　└── **Dockerfile**  
+　├── **darknet53**   
+　└── **libtorch** 
 
 ## 方法一：docker（改进ing）
 
