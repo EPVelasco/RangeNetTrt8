@@ -10,7 +10,7 @@ This project is based on the [RangeNetTrt8](https://github.com/Natsu-Akatsuki/Ra
   
 The hardware I have tested with is a core i7 9th Gen computer with a GTX1660 6GB graphics card. The native operating system is Ubuntu 18.04. But with docker you can test it on any ubuntu system. :)
 
-It is necessary to have [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) installed. 
+It is necessary to have [docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) installed and the [nvidia-docker2](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
 
 ## Topics
 ### Suscribed Topics
@@ -24,13 +24,16 @@ It is necessary to have [docker](https://www.digitalocean.com/community/tutorial
 - Download onnx model 
 ```
     cd ~/your_ws/RangeNetTrt8
-    wget -c https://www.ipb.uni-bonn.de/html/projects/semantic_suma/darknet53.tar.gz -O ~/your_ws/RangeNetTrt8/darknet53.tar.gz
-    cd ~/docker_ws/RangeNetTrt8 && tar -xzvf darknet53.tar.gz
+    wget -c https://www.ipb.uni-bonn.de/html/projects/semantic_suma/darknet53.tar.gz 
+    tar -xzvf darknet53.tar.gz
+    rm -r darknet53.tar.gz
 ```
 - Download libtorch 
 ```
-    wget -c https://download.pytorch.org/libtorch/cu113/libtorch-cxx11-abi-shared-with-deps-1.10.2%2Bcu113.zip -O libtorch.zip
+    cd ~/your_ws/RangeNetTrt8
+    wget -c https://download.pytorch.org/libtorch/cu113/libtorch-cxx11-abi-shared-with-deps-1.10.2%2Bcu113.zip
     unzip libtorch.zip
+    rm -r libtorch.zip
 ```
 
 ## Pull docker image
