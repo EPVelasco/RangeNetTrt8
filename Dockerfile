@@ -160,7 +160,6 @@ RUN cd ${HOME}/ros_ws/src/ && git clone https://github.com/EPVelasco/RangeNetTrt
 RUN mkdir -p ${HOME}/ros_ws/libtorch
 COPY ./libtorch ${HOME}/ros_ws/libtorch/
 COPY ./darknet53 /home/epvs_docker/ros_ws/src/RangeNetTrt8/darknet53/
-COPY ./CMakeLists.txt /home/epvs_docker/ros_ws/src/RangeNetTrt8/
 
 # build repository
 RUN cd ${HOME}/ros_ws/ && /bin/bash -c "source /opt/ros/noetic/setup.bash; catkin init"
