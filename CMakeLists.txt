@@ -37,6 +37,7 @@ include_directories(
 
 # 导入第三方库
 set(Torch_DIR "/home/epvs_docker/ros_ws/libtorch/share/cmake/Torch")
+#set(Torch_DIR "/usr/local/lib/python3.8/dist-packages/torch")
 find_package(Torch REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(PCL REQUIRED QUIET)
