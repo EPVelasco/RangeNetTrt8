@@ -4,7 +4,7 @@ This project is based on the [RangeNetTrt8](https://github.com/Natsu-Akatsuki/Ra
 ## File tree
 └── ~/your_ws   
 　└── RangeNetTrt8  
-　　├── Dockerfile.txt   
+　　├── Dockerfile   
 　　├── darknet53   
 　　└── libtorch   
   
@@ -32,8 +32,8 @@ It is necessary to have [docker](https://www.digitalocean.com/community/tutorial
 ```
     cd ~/your_ws/RangeNetTrt8
     wget -c https://download.pytorch.org/libtorch/cu113/libtorch-cxx11-abi-shared-with-deps-1.10.2%2Bcu113.zip
-    unzip libtorch.zip
-    rm -r libtorch.zip
+    unzip libtorch-cxx11-abi-shared-with-deps-1.10.2+cu113.zip
+    rm -r libtorch-cxx11-abi-shared-with-deps-1.10.2+cu113.zip
 ```
 
 ## Pull docker image
